@@ -36,4 +36,17 @@ ul {
     border-radius: 0.5rem;
     background-color: rgba(245, 245, 245, 0.148);
     backdrop-filter: blur(10px);
+
+
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+
+.loadingGif {
+    margin-top: 2rem;
+    max-width: 60px;
 }

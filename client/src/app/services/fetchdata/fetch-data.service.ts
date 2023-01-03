@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,13 +14,13 @@ export class FetchDataService {
   /////////// Fetch sectores data
   getAllSectores(): Observable<any> {
     return this.http.get<any>(
-      `${this.urlbase}/sectores`
+      `${environment.urlbase}/sectores`
     );
   }
 
   getSector(id: string): Observable<any> {
     return this.http.get<any>(
-      `${this.urlbase}/sectores/${id}`
+      `${environment.urlbase}/sectores/${id}`
     );
   }
 
@@ -28,13 +28,13 @@ export class FetchDataService {
   /////////// Fetch puestos data
   getAllPuestos(): Observable<any> {
     return this.http.get<any>(
-      `${this.urlbase}/puestos`
+      `${environment.urlbase}/puestos`
     );
   }
 
   getPuesto(id: string): Observable<any> {
     return this.http.get<any>(
-      `${this.urlbase}/puestos/${id}`
+      `${environment.urlbase}/puestos/${id}`
     );
   }
 
@@ -42,25 +42,25 @@ export class FetchDataService {
 
   getComputer(id: string): Observable<any> {
     return this.http.get<any>(
-      `${this.urlbase}/computers/${id}`
+      `${environment.urlbase}/computers/${id}`
       );
   }
 
   getPhone(id: string): Observable<any> {
     return this.http.get<any>(
-      `${this.urlbase}/phones/${id}`
+      `${environment.urlbase}/phones/${id}`
       );
   }
 
   getOther(id: string): Observable<any> {
     return this.http.get<any>(
-      `${this.urlbase}/others/${id}`
+      `${environment.urlbase}/others/${id}`
       );
   }
 
 
   ////////// Fetch all items
   getAll(): Observable<any>{
-    return this.http.get<any>(`${this.urlbase}/sectores/getall`)
+    return this.http.get<any>(`${environment.urlbase}/sectores/getall`)
   }
 }

@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FetchDataService } from 'src/app/services/fetchdata/fetch-data.service';
 import { dataHandlerService } from 'src/app/services/data handler/data-handler';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms'; 
 import { Computer } from 'src/app/models/computer';
 import { PostdataService } from 'src/app/services/postdata/postdata.service';
 import Swal from 'sweetalert2';

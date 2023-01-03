@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('newSector', { static: true }) newSector: ElementRef;
 
   constructor(
-    private dataHandler: dataHandlerService, 
+    private dataHandler: dataHandlerService,
     private router: Router
   ) { }
 
@@ -30,6 +30,23 @@ export class HomeComponent implements OnInit {
 
     this.dataHandler.getFilteredResults$.subscribe(res => this.filterResults = res)
 
+    this.fetchData()
+
+  }
+
+
+  fetchData() {
+
+    if (this.sectores.length < 1) {
+      setTimeout( () => {
+          this.dataHandler.setAllSectores();
+          this.fetchData();
+          console.log('fetching..')
+      }, 5000);
+    } else {
+      console.log('done')
+      return
+    }
 
   }
 
