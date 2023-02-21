@@ -10,7 +10,7 @@
 /node_modules
 npm-debug.log
 yarn-error.log
-
+/zBackup para deployar en Render con segunda cuenta
 # IDEs and editors
 .idea/
 .project

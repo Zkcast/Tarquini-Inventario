@@ -95,7 +95,7 @@ export class PhonedetailComponent implements OnInit {
     }).then((result) => {
       if (result.isDenied) {
         Swal.fire('Eliminado!', '', 'success')
-        this.post.deleteOther(this.current.id).subscribe(res => this.router.navigate(['/home']))
+        this.post.deletePhone(this.current.id).subscribe(res => this.router.navigate(['/home']))
       } 
     })
 

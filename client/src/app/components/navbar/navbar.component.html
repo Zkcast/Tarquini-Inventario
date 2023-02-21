@@ -1,13 +1,15 @@
-<nav class="navbar navbar-expand-lg navbar-custom justify-content-end ">
+<nav class="navbar navbar-expand-lg navbar-custom justify-content-between ">
 
     <!-- <a class="navbar-brand ml-2" (click)="cleanFilters()" routerLink="/home">Home</a> -->
+
+    <button class="btn btn-outline-dark btn-sm mx-3" (click)="handleModal(newSector)">Crear sector</button>
+
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <button class="btn btn-outline-dark btn-sm ml-3" (click)="handleModal(newSector)">Crear sector</button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto mr-1">
@@ -16,7 +18,7 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <input (input)="handleInput($event)" class="form-control mr-sm-2" type="search" placeholder="Buscar item..."
+            <input (input)="handleInput($event)" class="form-control mr-sm-2" type="search" title="Buscar por código de barras o nombre" placeholder="Buscar item..."
                 aria-label="Search">
             <!-- <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button> -->
         </form>

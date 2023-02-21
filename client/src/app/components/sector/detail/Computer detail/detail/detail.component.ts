@@ -27,10 +27,10 @@ export class DetailComponent implements OnInit {
     ) { }
 
   paramsId: string;
-  current: Computer;
-  computer: FormGroup;
-  programas: string[] = ['Google Chrome', '7zip', 'Adobe Acrobat', 'UltraVNC', 'TeamViewer', 'AnyDesk', 'Zoom', 'Windows Defender', 'Microsoft Office', 'Libre Office']
-  programasMixed: string[];
+  public current: Computer;
+  public computer: FormGroup;
+  public programas: string[] = ['Google Chrome', '7zip', 'Adobe Acrobat', 'UltraVNC', 'TeamViewer', 'AnyDesk', 'Zoom', 'Windows Defender', 'Microsoft Office', 'Libre Office']
+  public programasMixed: string[];
 
   async ngOnInit(): Promise<void> {
 
@@ -100,10 +100,6 @@ export class DetailComponent implements OnInit {
       {return alert(`Ya existe ${Programa} en la lista`)}
     } else {
       this.post.editComputer(this.current.id, {programas: [...this.current.programas, Programa]}).subscribe(res => {
-        // this.http.getComputer(this.paramsId).subscribe(ress => {
-        //   this.current = ress;
-        //   this.programasMixed = [...new Set([...ress.programas, ...this.programas])]
-        // })
         this.ngOnInit()
       });
     }

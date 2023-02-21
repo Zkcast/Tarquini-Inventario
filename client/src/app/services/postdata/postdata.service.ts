@@ -6,7 +6,7 @@ import { Computer } from '../../models/computer';
 import { Other } from '../../models/other';
 import { Phone } from '../../models/phone';
 import { environment } from 'src/environments/environment';
-
+import { PostNewComputer, PostNewOther, PostNewPhone} from 'src/app/models/ServerPostsResponses';
 @Injectable({
   providedIn: 'root'
 })
@@ -42,8 +42,8 @@ export class PostdataService {
 
   //// computers methods
   
-  createComputer(Computer: newComputer, sectorId: string): Observable<any> {
-    return this.http.post<any>(
+  createComputer(Computer: newComputer, sectorId: string): Observable<PostNewComputer> {
+    return this.http.post<PostNewComputer>(
       `${environment.urlbase}/computers/${sectorId}`,
       Computer
     );
@@ -71,23 +71,22 @@ export class PostdataService {
   //// others methods
 
 
-  createOther(Other: any, sectorId: string): Observable<any> {
-    return this.http.post<any>(
+  createOther(Other: any, sectorId: string): Observable<PostNewOther> {
+    return this.http.post<PostNewOther>(
       `${environment.urlbase}/others/${sectorId}`,
       Other
     );
   }
 
   editOther(otherId: string, newValues: any) {
-    console.log(otherId, newValues)
-    return this.http.put<any>(
+    return this.http.put<{msg: string}>(
       `${environment.urlbase}/others/editother/${otherId}`,
       newValues
     );
   }
 
   deleteOther(otherId: string): Observable<any> {
-    return this.http.delete<any>(`${environment.urlbase}/others`,
+    return this.http.delete<{msg: string}>(`${environment.urlbase}/others`,
       {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
@@ -102,19 +101,19 @@ export class PostdataService {
   //// phone methods
 
 
-  createPhone(Phone: Phone, sectorId: string): Observable<any> {
-    return this.http.post<any>(`${environment.urlbase}/phones/${sectorId}`, Phone)
+  createPhone(Phone: Phone, sectorId: string): Observable<PostNewPhone> {
+    return this.http.post<PostNewPhone>(`${environment.urlbase}/phones/${sectorId}`, Phone)
   }
 
   editPhone(phoneId: string, newValues: any) {
-    return this.http.put<any>(
+    return this.http.put<{msg: string}>(
       `${environment.urlbase}/phones/editphone/${phoneId}`,
       newValues
     );
   }
 
   deletePhone(phoneId: string): Observable<any> {
-    return this.http.delete<any>(`${environment.urlbase}/phones`,
+    return this.http.delete<{msg: string}>(`${environment.urlbase}/phones`,
       {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',

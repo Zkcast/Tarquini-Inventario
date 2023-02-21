@@ -25,9 +25,9 @@ export class OtherdetailComponent implements OnInit {
   ) { }
 
 
-  paramsId: string;
-  current: Other;
-  other: FormGroup;
+  public paramsId: string;
+  public current: Other;
+  public other: FormGroup;
 
   ngOnInit(): void {
 

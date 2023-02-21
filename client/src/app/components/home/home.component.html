@@ -13,7 +13,7 @@
     <div class='filter_results'>
         <ul>
             <li *ngFor="let result of filterResults">
-                <a routerLink={{getRoute(result)}}>{{result.nombre ? result.nombre : result.inventario}}
+                <a routerLink={{getRoute(result)}}>{{result.inventario}} {{result.usuario}}
                     ({{result.Sector.nombre}})
                 </a>
             </li>

@@ -16,8 +16,6 @@ export class NavbarComponent implements OnInit {
     private post: PostdataService,
     private modalService: NgbModal) { }
 
-
-  test: any[]
   sector: FormGroup;
   
   ngOnInit(): void {
@@ -41,7 +39,7 @@ export class NavbarComponent implements OnInit {
   }
 
   createSector() {
-    this.post.createSector(this.sector.value.sectorName).subscribe(res =>{ console.log(res); this.dataHandler.setAllSectores()})
+    this.post.createSector(this.sector.value.sectorName).subscribe(res =>{ this.dataHandler.setAllSectores()})
     ;
 
   }

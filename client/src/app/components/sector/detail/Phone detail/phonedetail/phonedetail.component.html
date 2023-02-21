@@ -46,42 +46,13 @@
                                 formControlName="imei"> </p>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <button (click)="editPhone()" class="btn btn-primary">Guardar</button>
-                        <button (click)="deletePhone()" class="btn btn-danger">Eliminar</button>
+                        <button (click)="editPhone()" class="btn btn-primary m-1">Guardar</button>
+                        <button (click)="deletePhone()" class="btn btn-danger m-1">Eliminar</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
-    <!-- 
-    id: string;
-    inventario: string;
-    puesto: string;
-    ubicacion: string;
-    usuario: string;
-    marca: string;
-    nromodelo: string;
-    micro: string;
-    memoriainterna: string;
-    ram: string;
-    imei: string;
-    serie: string;
-    codigodebarras: string;
-    cfgcorreoempresa: string;
-    wpbusiness: string;
-    nrofactura: string;
-    fechafactura: string;
-    proveedor: string;
-    entregaplanilla: string;
-    versionandroid: string;
-    microsd: string;
-    fuente: string;
-    nro: string;
-    usuarioclaro: string;
-    accesorios: string;
-    cfggmail: string; -->
-
 
     <div class="rightdiv">
 
@@ -109,24 +80,4 @@
         </div>
     </div>
 
-    <!-- <div>
-        <div class="program_list">
-            <h5>Programas</h5>
-            <ul>
-                <div *ngFor="let programa of current.programas">
-                    <li>{{programa}}</li><button (click)="handlePrograma(programa)">x</button>
-                </div>
-                <form (submit)="handlePrograma(programa.value)">
-                    <input #programa><button type="submit">add</button>
-                </form>
-            </ul>
-        </div>
-        <hr />
-        <div class="observaciones">
-            <h5>Observaciones</h5>
-            <form [formGroup]="computer">
-                <input formControlName="observaciones" class='form-control textarea' [value]="current.observaciones">
-            </form>
-        </div>
-    </div> -->
 </div>

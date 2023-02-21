@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Computer } from 'src/app/models/computer';
 import { newComputer } from 'src/app/models/newcomputer';
-
+import { SectorContent } from 'src/app/models/SectorContent';
 @Component({
   selector: 'app-sector',
   templateUrl: './sector.component.html',
@@ -33,12 +33,8 @@ export class SectorComponent implements OnInit {
     private router: Router) { }
 
 
-
-
   paramsId: string;
-  public sector: any;
-  public selected: any;
-  public sectorlength: number;
+  public sector: SectorContent;
   public newComputer: FormGroup
   public newPhone: FormGroup
   public newOther: FormGroup
@@ -49,8 +45,8 @@ export class SectorComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.paramsId = params['sector'];
       this.getPuestos.setSector(this.paramsId);
-      this.getPuestos.getSector$.subscribe((res) => { this.sector = res; this.sectorlength })
-    });
+      this.getPuestos.getSector$.subscribe((res) => { if (res !== null) this.sector = res })
+    })
 
     this.newComputer = new FormGroup({
       inventario: new FormControl('PC/Computadora'),
@@ -91,16 +87,7 @@ export class SectorComponent implements OnInit {
 
 
   handleModal(content: any) {
-    // console.log(element)
-    // this.selected = element
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
-  }
-
-  testType(e: any) {
-    return e == 'caracteristicas'
-  }
-
-  showInfo() {
   }
 
   goHome() {
@@ -133,25 +120,23 @@ export class SectorComponent implements OnInit {
   }
 
 
-  postNewComputer() {
+  postNewComputer(): void {
     this.post.createComputer(this.newComputer.value, this.paramsId).subscribe((res) => {
+      console.log(res)
       this.modalService.dismissAll(this.detail);
       this.router.navigate([`/detail/${res.newComputer.id}`]);
     })
   }
 
-
-  postNewPhone() {
+  postNewPhone(): void  {
     this.post.createPhone(this.newPhone.value, this.paramsId).subscribe((res) => {
       this.modalService.dismissAll(this.detail);
       this.router.navigate([`/phonedetail/${res.newPhone.id}`]);
     })
   }
 
-  postNewOther() {
-    console.log(this.newOther.value)
+  postNewOther(): void  {
     this.post.createOther(this.newOther.value, this.paramsId).subscribe((res) => {
-
       this.modalService.dismissAll(this.detail);
       this.router.navigate([`/otherdetail/${res.newOther.id}`]);
     })

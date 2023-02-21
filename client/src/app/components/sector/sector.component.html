@@ -1,9 +1,9 @@
 <h1 class="title">
-    <p class="text-center">{{sector.nombre}} ({{countItems()}} items)</p>
+    <p class="text-center">{{sector?.nombre}} ({{countItems()}} items)</p>
 </h1>
 <hr />
 <button (click)="goHome()" class="btn btn-secondary m-3">Volver</button>
-<div class="sector_container">
+<div *ngIf='sector' class="sector_container">
     <div type="primary" class="accordion" id="accordionExample">
         <div class="accordion-item">
             <h2 class="accordion-header  custom-accordion" id="headingOne">
@@ -36,7 +36,8 @@
                 <div class="accordion-body">
                     <div *ngFor="let phone of sector.Phones">
                         <!-- <button class="btn btn-secondary mt-1" (click)="handleModal(phone)" >Telefono {{phone.marca}}</button> -->
-                        <a routerLink="/phonedetail/{{phone.id}}" class="mt-1">Telefono {{phone.marca}} - Usuario {{phone.usuario}}</a>
+                        <a routerLink="/phonedetail/{{phone.id}}" class="mt-1">Telefono {{phone.marca}} - Usuario
+                            {{phone.usuario}}</a>
                     </div>
                 </div>
             </div>
@@ -70,16 +71,18 @@
     </div>
 
     <ng-template #detail let-modal>
-        <button type="button" id="closemodal" class="btn btc-danger pull-right" aria-label="Close"
+        <button type="button" id="closemodal" class="btn btc-danger pull-right text-end" aria-label="Close"
             (click)="modal.dismiss('Cross click')">✕</button>
         <div class="reservebody">
             <form>
                 <ng-container>
-                    <div class="add_element_modal">
+                    <h5 class="text-secondary text-center">Elije el tipo de elemento que deseas crear</h5>
+                    <div class="add_element_modal d-flex justify-content-around">
                         <ng-container>
-                            <button (click)="handleModal(createComputer)">PC/Notebook</button>
-                            <button (click)="handleModal(createPhone)">Telefono</button>
-                            <button (click)="handleModal(createOther)">Otro</button>
+                            <button class='btn btn-secondary mx-2'
+                                (click)="handleModal(createComputer)">PC/Notebook</button>
+                            <button class='btn btn-secondary mx-2' (click)="handleModal(createPhone)">Teléfono</button>
+                            <button class='btn btn-secondary mx-2' (click)="handleModal(createOther)">Otro</button>
                         </ng-container>
                     </div>
                 </ng-container>
@@ -98,50 +101,50 @@
         <div class="reservebody">
             <ng-container>
                 <div class="add_element_modal">
-                        <form [formGroup]="newComputer">
-                            <div class="principal_caracts">
-                                <p class="card-text cardtext"><b>Ubicacion:</b> <input type="text" class="form-control"
-                                        aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                                        formControlName="ubicacion"> </p>
-                            </div>
-                            <div class="principal_caracts">
-                                <p class="card-text cardtext"><b>Usuario:</b> <input type="text" class="form-control"
-                                        aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                                        formControlName="usuario"> </p>
-                            </div>
-                            <div class="principal_caracts">
-                                <p class="card-text cardtext"><b>S.O.:</b> <input type="text" class="form-control"
-                                        aria-label="Small" aria-describedby="inputGroup-sizing-sm" formControlName="os">
-                                </p>
-                            </div>
-                            <div class="principal_caracts">
-                                <p class="card-text cardtext"><b>Mother:</b> <input type="text" class="form-control"
-                                        aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                                        formControlName="mother"> </p>
-                            </div>
-                            <div class="principal_caracts">
-                                <p class="card-text cardtext"><b>Microprocesador:</b> <input type="text"
-                                        class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                                        formControlName="microprocesador">
-                                </p>
-                            </div>
-                            <div class="principal_caracts">
-                                <p class="card-text cardtext"><b>RAM:</b> <input type="text" class="form-control"
-                                        aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                                        formControlName="ram"> </p>
-                            </div>
-                            <div class="principal_caracts">
-                                <p class="card-text cardtext"><b>Disco:</b> <input type="text" class="form-control"
-                                        aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                                        formControlName="disco"> </p>
-                            </div>
-                            <div class="principal_caracts">
-                                <p class="card-text cardtext"><b>Codigo de barras:</b> <input type="text"
-                                        class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                                        formControlName="codigodebarras"> </p>
-                            </div>
-                            <button (click)="postNewComputer()" class="btn btn-primary mt-2">Crear</button>
-                        </form>
+                    <form [formGroup]="newComputer">
+                        <div class="principal_caracts">
+                            <p class="card-text cardtext"><b>Ubicacion:</b> <input type="text" class="form-control"
+                                    aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                                    formControlName="ubicacion"> </p>
+                        </div>
+                        <div class="principal_caracts">
+                            <p class="card-text cardtext"><b>Usuario:</b> <input type="text" class="form-control"
+                                    aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                                    formControlName="usuario"> </p>
+                        </div>
+                        <div class="principal_caracts">
+                            <p class="card-text cardtext"><b>S.O.:</b> <input type="text" class="form-control"
+                                    aria-label="Small" aria-describedby="inputGroup-sizing-sm" formControlName="os">
+                            </p>
+                        </div>
+                        <div class="principal_caracts">
+                            <p class="card-text cardtext"><b>Mother:</b> <input type="text" class="form-control"
+                                    aria-label="Small" aria-describedby="inputGroup-sizing-sm" formControlName="mother">
+                            </p>
+                        </div>
+                        <div class="principal_caracts">
+                            <p class="card-text cardtext"><b>Microprocesador:</b> <input type="text"
+                                    class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                                    formControlName="microprocesador">
+                            </p>
+                        </div>
+                        <div class="principal_caracts">
+                            <p class="card-text cardtext"><b>RAM:</b> <input type="text" class="form-control"
+                                    aria-label="Small" aria-describedby="inputGroup-sizing-sm" formControlName="ram">
+                            </p>
+                        </div>
+                        <div class="principal_caracts">
+                            <p class="card-text cardtext"><b>Disco:</b> <input type="text" class="form-control"
+                                    aria-label="Small" aria-describedby="inputGroup-sizing-sm" formControlName="disco">
+                            </p>
+                        </div>
+                        <div class="principal_caracts">
+                            <p class="card-text cardtext"><b>Codigo de barras:</b> <input type="text"
+                                    class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                                    formControlName="codigodebarras"> </p>
+                        </div>
+                        <button (click)="postNewComputer()" class="btn btn-primary mt-2">Crear</button>
+                    </form>
                 </div>
             </ng-container>
 
@@ -161,74 +164,7 @@
         <div class="reservebody">
             <ng-container>
                 <div class="add_element_modal">
-                        <form [formGroup]="newPhone">
-                            <div class="principal_caracts">
-                                <p class="card-text cardtext"><b>Ubicacion:</b> <input type="text" class="form-control"
-                                        aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                                        formControlName="ubicacion"> </p>
-                            </div>
-                            <div class="principal_caracts">
-                                <p class="card-text cardtext"><b>Usuario:</b> <input type="text" class="form-control"
-                                        aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                                        formControlName="usuario"> </p>
-                            </div>
-                            <div class="principal_caracts">
-                                <p class="card-text cardtext"><b>Marca:</b> <input type="text" class="form-control"
-                                        aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                                        formControlName="marca">
-                                </p>
-                            </div>
-                            <div class="principal_caracts">
-                                <p class="card-text cardtext"><b>Modelo:</b> <input type="text" class="form-control"
-                                        aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                                        formControlName="nromodelo"> </p>
-                            </div>
-                            <div class="principal_caracts">
-                                <p class="card-text cardtext"><b>Microprocesador:</b> <input type="text"
-                                        class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                                        formControlName="micro">
-                                </p>
-                            </div>
-                            <div class="principal_caracts">
-                                <p class="card-text cardtext"><b>RAM:</b> <input type="text" class="form-control"
-                                        aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                                        formControlName="ram"> </p>
-                            </div>
-                            <div class="principal_caracts">
-                                <p class="card-text cardtext"><b>IMEI:</b> <input type="text" class="form-control"
-                                        aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                                        formControlName="imei"> </p>
-                            </div>
-                            <div class="principal_caracts">
-                                <p class="card-text cardtext"><b>Codigo de barras:</b> <input type="text"
-                                        class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                                        formControlName="codigodebarras"> </p>
-                            </div>
-                            <button (click)="postNewPhone()" class="btn btn-primary mt-2">Crear</button>
-                        </form>
-                    </div>
-                </ng-container>
-    
-            </div>
-        </ng-template>
-
-
-</div>
-
-<ng-template #createOther let-modal>
-    <button type="button" id="closemodal" class="btn btc-danger pull-right" aria-label="Close"
-        (click)="modal.dismiss('Cross click')">✕</button>
-    <hr />
-    <h5 class="text-center">Nuevo elemento</h5>
-    <div class="reservebody">
-        <ng-container>
-            <div class="add_element_modal">
-                    <form [formGroup]="newOther">
-                        <div class="principal_caracts">
-                            <p class="card-text cardtext"><b>Nombre:</b> <input type="text" class="form-control"
-                                    aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                                    formControlName="nombre"> </p>
-                        </div>
+                    <form [formGroup]="newPhone">
                         <div class="principal_caracts">
                             <p class="card-text cardtext"><b>Ubicacion:</b> <input type="text" class="form-control"
                                     aria-label="Small" aria-describedby="inputGroup-sizing-sm"
@@ -241,19 +177,28 @@
                         </div>
                         <div class="principal_caracts">
                             <p class="card-text cardtext"><b>Marca:</b> <input type="text" class="form-control"
-                                    aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                                    formControlName="marca">
+                                    aria-label="Small" aria-describedby="inputGroup-sizing-sm" formControlName="marca">
                             </p>
                         </div>
                         <div class="principal_caracts">
                             <p class="card-text cardtext"><b>Modelo:</b> <input type="text" class="form-control"
                                     aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                                    formControlName="modelo"> </p>
+                                    formControlName="nromodelo"> </p>
                         </div>
                         <div class="principal_caracts">
                             <p class="card-text cardtext"><b>Microprocesador:</b> <input type="text"
                                     class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                                    formControlName="nroserie">
+                                    formControlName="micro">
+                            </p>
+                        </div>
+                        <div class="principal_caracts">
+                            <p class="card-text cardtext"><b>RAM:</b> <input type="text" class="form-control"
+                                    aria-label="Small" aria-describedby="inputGroup-sizing-sm" formControlName="ram">
+                            </p>
+                        </div>
+                        <div class="principal_caracts">
+                            <p class="card-text cardtext"><b>IMEI:</b> <input type="text" class="form-control"
+                                    aria-label="Small" aria-describedby="inputGroup-sizing-sm" formControlName="imei">
                             </p>
                         </div>
                         <div class="principal_caracts">
@@ -261,10 +206,65 @@
                                     class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
                                     formControlName="codigodebarras"> </p>
                         </div>
-                        <button (click)="postNewOther()" class="btn btn-primary mt-2">Crear</button>
+                        <button (click)="postNewPhone()" class="btn btn-primary mt-2">Crear</button>
                     </form>
                 </div>
             </ng-container>
 
         </div>
     </ng-template>
+
+
+</div>
+
+<ng-template #createOther let-modal>
+    <button type="button" id="closemodal" class="btn btc-danger pull-right" aria-label="Close"
+        (click)="modal.dismiss('Cross click')">✕</button>
+    <hr />
+    <h5 class="text-center">Nuevo elemento</h5>
+    <div class="reservebody">
+        <ng-container>
+            <div class="add_element_modal">
+                <form [formGroup]="newOther">
+                    <div class="principal_caracts">
+                        <p class="card-text cardtext"><b>Nombre:</b> <input type="text" class="form-control"
+                                aria-label="Small" aria-describedby="inputGroup-sizing-sm" formControlName="nombre">
+                        </p>
+                    </div>
+                    <div class="principal_caracts">
+                        <p class="card-text cardtext"><b>Ubicacion:</b> <input type="text" class="form-control"
+                                aria-label="Small" aria-describedby="inputGroup-sizing-sm" formControlName="ubicacion">
+                        </p>
+                    </div>
+                    <div class="principal_caracts">
+                        <p class="card-text cardtext"><b>Usuario:</b> <input type="text" class="form-control"
+                                aria-label="Small" aria-describedby="inputGroup-sizing-sm" formControlName="usuario">
+                        </p>
+                    </div>
+                    <div class="principal_caracts">
+                        <p class="card-text cardtext"><b>Marca:</b> <input type="text" class="form-control"
+                                aria-label="Small" aria-describedby="inputGroup-sizing-sm" formControlName="marca">
+                        </p>
+                    </div>
+                    <div class="principal_caracts">
+                        <p class="card-text cardtext"><b>Modelo:</b> <input type="text" class="form-control"
+                                aria-label="Small" aria-describedby="inputGroup-sizing-sm" formControlName="modelo">
+                        </p>
+                    </div>
+                    <div class="principal_caracts">
+                        <p class="card-text cardtext"><b>Microprocesador:</b> <input type="text" class="form-control"
+                                aria-label="Small" aria-describedby="inputGroup-sizing-sm" formControlName="nroserie">
+                        </p>
+                    </div>
+                    <div class="principal_caracts">
+                        <p class="card-text cardtext"><b>Codigo de barras:</b> <input type="text" class="form-control"
+                                aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                                formControlName="codigodebarras"> </p>
+                    </div>
+                    <button (click)="postNewOther()" class="btn btn-primary mt-2">Crear</button>
+                </form>
+            </div>
+        </ng-container>
+
+    </div>
+</ng-template>

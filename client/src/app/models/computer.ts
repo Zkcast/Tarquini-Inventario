@@ -1,78 +1,81 @@
+import { Sector } from "./sector";
+
 export interface Computer {
-    
-SectorId: string;
+    tipo: 'Computer';
+    Sector: Sector;
+    SectorId: string;
 
-accesodirectosv: string;
+    accesodirectosv: string;
 
-actualizacionso: string;
+    actualizacionso: string;
 
-actualizacionwin: string;
+    actualizacionwin: string;
 
-backuplocal: string;
+    backuplocal: string;
 
-camaraweb: string;
+    camaraweb: string;
 
-cfgcarpetasadrive: string;
+    cfgcarpetasadrive: string;
 
-cfgcorreo: string;
+    cfgcorreo: string;
 
-codigodebarras: string;
+    codigodebarras: string;
 
-createdAt: string;
+    createdAt: string;
 
-disco: string;
+    disco: string;
 
-entregaplanilla: string;
+    entregaplanilla: string;
 
-filestream: string;
+    filestream: string;
 
-grupolicencia: string;
+    grupolicencia: string;
 
-grupotrabajo: string;
+    grupotrabajo: string;
 
-habilitaradministrador: string;
+    habilitaradministrador: string;
 
-id: string;
+    id: string;
 
-idproducto: string;
+    idproducto: string;
 
-impresora: string;
+    impresora: string;
 
-inventario: string;
+    inventario: string;
 
-licenciawinoffice: string;
+    licenciawinoffice: string;
 
-microprocesador: string;
+    microprocesador: string;
 
-mother: string;
+    mother: string;
 
-nombreequipo: string;
+    nombreequipo: string;
 
-nrofacturacompra: string;
+    nrofacturacompra: string;
 
-observaciones: string;
+    observaciones: string;
 
-os: string;
+    os: string;
 
-passwifiubuntu: string;
+    passwifiubuntu: string;
 
-programas: any;
+    programas: any;
 
-puesto: string;
+    puesto: string;
 
-ram: string;
+    ram: string;
 
-reglicplanillacontrol: string;
+    reglicplanillacontrol: string;
 
-serie: string;
+    serie: string;
 
-ubicacion: string;
+    ubicacion: string;
 
-updatedAt: string;
+    updatedAt: string;
 
-usuario: string;
+    usuario: string;
 
-usuariolinux: string;
+    usuariolinux: string;
 
-usuariowindows: string;
+    usuariowindows: string;
 }

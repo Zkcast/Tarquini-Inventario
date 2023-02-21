@@ -4,7 +4,10 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { dataHandlerService } from 'src/app/services/data handler/data-handler';
 import { PostdataService } from 'src/app/services/postdata/postdata.service';
-
+import { Sector } from 'src/app/models/sector';
+import { Phone } from 'src/app/models/phone';
+import { Computer } from 'src/app/models/computer';
+import { Other } from 'src/app/models/other';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -19,16 +22,16 @@ export class HomeComponent implements OnInit {
     private router: Router
   ) { }
 
-  public sectores: any[]
+  public sectores: Sector[]
 
-  filterResults: any[]
+  public filterResults: (Phone | Computer | Other)[];
 
   ngOnInit(): void {
 
     this.dataHandler.setAllSectores();
-    this.dataHandler.getSectores$.subscribe((res) => { this.sectores = res; this.sectores = this.sectores.sort() })
+    this.dataHandler.getSectores$.subscribe((res: Sector[]) => { this.sectores = res; this.sectores = this.sectores.sort() })
 
-    this.dataHandler.getFilteredResults$.subscribe(res => this.filterResults = res)
+    this.dataHandler.getFilteredResults$.subscribe(res => {this.filterResults = res})
 
     this.fetchData()
 
@@ -57,7 +60,7 @@ export class HomeComponent implements OnInit {
     console.log(this.sectores)
   }
 
-  getRoute(element: any): string {
+  getRoute(element: (Phone | Computer | Other)): string {
 
     let object = element.inventario.toLowerCase()
 
